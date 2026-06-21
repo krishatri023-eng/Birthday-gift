@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+p{
+    color:#555;
+    margin-bottom:20px;
+}
+
+.buttons{
+    display:grid;
+    gap:12px;
+}
+
+button{
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.birthday{
+    background:#ff758f;
+    color:white;
+}
+
+.cake{
+    background:#ffb703;
+    color:white;
+}
+
+.party{
+    background:#4361ee;
+    color:white;
+}
+
+.gift{
+    background:#06d6a0;
+    color:white;
+}
+
+.love{
+    background:#ff006e;
+    color:white;
+}
+
+.result{
+    margin-top:25px;
+    padding:15px;
+    border-radius:12px;
+    background:#fff5f7;
+    min-height:80px;
+    font-size:18px;
+    color:#333;
+    font-weight:bold;
+}
+
+.heart{
+    position:fixed;
+    font-size:24px;
+    animation:float 4s linear forwards;
+    pointer-events:none;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <p>Choose a surprise celebration below!</p>
+
+    <div class="buttons">
+        <button class="birthday" onclick="showMessage('🎉 Happy Birthday! May your day be filled with joy, laughter, and lots of love!')">
+            Birthday Wishes 🎉
+        </button>
+
+        <button class="cake" onclick="showMessage('🎂 A delicious birthday cake just for you! Make a wish and blow the candles!')">
+            Cake Surprise 🎂
+        </button>
+
+        <button class="party" onclick="showMessage('🥳 Party Time! Music, dancing, and endless fun are waiting for you!')">
+            Party Celebration 🥳
+        </button>
+
+        <button class="gift" onclick="showMessage('🎁 Surprise Gift Unlocked! You deserve all the happiness in the world!')">
+            Open Gift 🎁
+        </button>
+
+        <button class="love" onclick="loveMessage()">
+            ❤️ I Love You ❤️
+        </button>
+    </div>
+
+    <div class="result" id="result">
+        Tap any button to reveal a surprise!
+    </div>
+</div>
+
+<script>
+function showMessage(message){
+    document.getElementById("result").innerHTML = message;
+}
+
+function loveMessage(){
+    document.getElementById("result").innerHTML =
+    "❤️ I Love You ❤️<br><br>You are the most special person in my life. Wishing you endless happiness, love, and beautiful memories today and always! 💖";
+
+    for(let i=0;i<30;i++){
+        createHeart();
+    }
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px";
+    heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+</script>
+
+</body>
+</html>
